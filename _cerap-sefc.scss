@@ -1,0 +1,37 @@
+
+// MISC
+// #main{ 
+// 	>.inside{container-type: inline-size; container-name: main;}
+// }
+
+.mod_article{container-type: inline-size;}
+
+#grid--reassurance{
+	--rea-cols: 2;
+	--rea-decal: 50px;
+	grid-template-columns: Repeat(var(--rea-cols), 1fr); 
+	gap: calc(var(--rea-decal) * 1.5);
+	padding-bottom: calc((var(--rea-decal) * 2) + $spacing);
+	>*{
+		&:nth-child(2n) {
+		    translate: 0 calc(var(--rea-decal) * 2);
+		}
+	}
+	.block-card[data-preset=inline]{
+		@extend .content__bg--greylighter !optional;
+		.block-card__wrapper{ overflow: visible;
+			.block-card__figure { flex-basis: fit-content; min-width: 150px; overflow: visible; padding: 0 0 0 3em; flex-grow: 0; margin-top: calc(var(--rea-decal) * -1); margin-bottom: auto;
+				img{width: 150px;}
+			}
+		} 
+		.block-card__title{text-transform: none; text-wrap: balance;}
+		.block-card__text {font-size: 1.4em;}
+	}
+	
+
+	@container (max-width: 800px) {
+		padding-bottom:  $spacing;
+		grid-template-columns: 1fr; 
+		>*:nth-child(2n){translate: 0;}
+	}
+}
